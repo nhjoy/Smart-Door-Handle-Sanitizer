@@ -24,6 +24,7 @@ Servo servo_10;
 
 void setup()
 {
+  Serial.begin(9600);
   pinMode(4, OUTPUT);
   servo_9.attach(9, 500, 2500);
 
@@ -39,10 +40,12 @@ void loop()
     delay(1000); // Wait for 1000 millisecond(s)
     servo_9.write(0);
     servo_10.write(180);
+    Serial.print("Now, Sanitization is off\n");
   } else {
     servo_9.write(90);
     servo_10.write(90);
     delay(1000); // Wait for 1000 millisecond(s)
     digitalWrite(4, HIGH);
+    Serial.print("Now, Sanitizing\n");
   }
 }
